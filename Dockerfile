@@ -1,8 +1,5 @@
-FROM nocodb/nocodb:0.255.0
-
-WORKDIR /usr/app
+FROM nocodb/nocodb:latest
 
 ENV NC_DISABLE_TELE=true
-ENV PORT=8080
 
 EXPOSE 8080
