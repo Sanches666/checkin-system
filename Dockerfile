@@ -1,5 +1,5 @@
-FROM nocodb/nocodb:0.202.10
+FROM nocodb/nocodb:latest
 
-ENV PORT=8080
+ENV NC_DISABLE_TELE=true
 
 EXPOSE 8080
