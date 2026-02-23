@@ -1,11 +1,21 @@
-FROM nocodb/nocodb:latest
+FROM node:18-alpine
 
-ENV NC_AUTH_JWT_SECRET="render-secret-key-2026"
+# Устанавливаем рабочую директорию
+WORKDIR /app
+
+# Устанавливаем NocoDB глобально
+RUN npm install -g nocodb
+
+# Создаём директорию для данных
+RUN mkdir -p /app/data
+
+# Переменные окружения по умолчанию
+ENV NC_DB="sqlite:///app/data/noco.db"
 ENV NC_DISABLE_TELE="true"
 ENV PORT=8080
 
-RUN mkdir -p /usr/app/data
-
+# Открываем порт
 EXPOSE 8080
 
-CMD ["node", "docker/main.js"]
+# Запускаем NocoDB
+CMD ["nocodb"]
